@@ -20,28 +20,33 @@ Ding et al. provide high-resolution satellite images with annotations [1]. We us
 [1]: Jian Ding and Nan Xue and Gui-Song Xia and Xiang Bai and Wen Yang and Michael Ying Yang and Serge J. Belongie and Jiebo Luo and Mihai Datcu and Marcello Pelillo and Liangpei Zhang 2021. Object Detection in Aerial Images: A Large-Scale Benchmark and Challenges. CoRR, abs/2102.12219.
 
 #### SeaDronesSee-DET
-SeaDronesSee focus on search and rescue in maritime environments [2]. The training set includes 2,975 images with 21,272 annotations. We reduced the maximum side length of the images to 1024 pixels for this data set.\\
+SeaDronesSee focus on search and rescue in maritime environments [2]. The training set includes 2,975 images with 21,272 annotations. We reduced the maximum side length of the images to 1024 pixels for this data set.
 The reported accuracy is evaluated on the test set (with 1,796 images). This data set uses the PNG format [3], which utilizes a lossless compression.
 
 [2]: Varga, L., Kiefer, B., Messmer, M., and Zell, A. 2022. Seadronessee: A maritime benchmark for detecting humans in open water. In Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (pp. 2260–2270).
+
 [3]: Thomas Boutell 1997. PNG (Portable Network Graphics) Specification Version 1.0. RFC, 2083, p.1–102.
 
 #### VisDrone-DET
-Zhu \etal proposed one of the most prominent UAV recordings data set [4]. The focus of this data set is traffic surveillance in urban areas. We use the detection task (VisDrone-DET). The training set contains 6,471 images with 343,205 annotations. Unless otherwise mentioned, we reduced the maximum side length by down-scaling to 1024 pixels.\\
+Zhu et al. proposed one of the most prominent UAV recordings data set [4]. The focus of this data set is traffic surveillance in urban areas. We use the detection task (VisDrone-DET). The training set contains 6,471 images with 343,205 annotations. Unless otherwise mentioned, we reduced the maximum side length by down-scaling to 1024 pixels.
 We used the validation set for evaluation. The validation set contains 548 images. All images of this data set are provided in JPEG format [5] with a compression quality of 95.
 
 [4]: Pengfei Zhu and Longyin Wen and Dawei Du and Xiao Bian and Qinghua Hu and Haibin Ling 2020. Vision Meets Drones: Past, Present and Future. CoRR, abs/2001.06303.
+
 [5]: Gregory K. Wallace 1991. The JPEG Still Picture Compression Standard. Commun. ACM, 34(4), p.30–44. 
 
 ### EXPERIMENTS - Models
 #### CenterNet
-Duan \etal proposed CenterNet [6], an anchor-free object detector. The network uses a heat-map to predict the center-points of the objects. Based on these center-points, the bounding boxes are regressed.
+Duan et al. proposed CenterNet [6], an anchor-free object detector. The network uses a heat-map to predict the center-points of the objects. Based on these center-points, the bounding boxes are regressed.
 Hourglass-104 [7] is a representative for extensive backbones, while the ResNet-backbones [8] cover a variety of different backbone sizes.
-The ResNet backbones were trained with Adam and a learning rate of 1e-4. Further, we also used the plateau learning scheduler. For the Hourglass104-backbone, we used the learning schedule proposed by Pailla \etal [9].
+The ResNet backbones were trained with Adam and a learning rate of 1e-4. Further, we also used the plateau learning scheduler. For the Hourglass104-backbone, we used the learning schedule proposed by Pailla et al. [9].
 
 [6]: Kaiwen Duan and Song Bai and Lingxi Xie and Honggang Qi and Qingming Huang and Qi Tian 2019. CenterNet: Keypoint Triplets for Object Detection. In 2019 IEEE/CVF International Conference on Computer Vision, ICCV 2019, Seoul, Korea (South), October 27 - November 2, 2019 (pp. 6568–6577). IEEE.
+
 [7]: Newell, A., Yang, K., and Deng, J. 2016. Stacked hourglass networks for human pose estimation. In Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics) (pp. 483–499).
+
 [8]: He, K., Zhang, X., Ren, S., and Sun, J. 2016. Deep residual learning for image recognition. In Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition (pp. 770–778). IEEE Computer Society.
+
 [9]: Dheeraj Reddy Pailla and Varghese Alex Kollerathu and Sai Saketh Chennamsetty 2019. Object detection on aerial imagery using CenterNet. CoRR, abs/1908.08244.
 
 #### EfficientDet
@@ -49,6 +54,7 @@ EfficientDet is optimized for efficiency and can perform well with small backbon
 We used three anchor scales (0.6, 0.9, 1.2), which are optimized to detect the small objects of the data sets. For the optimization, we used an Adam optimizer [11] with a learning rate of 1e-4. Further, we used a learning rate scheduler, which reduces the learning rate on plateaus with patience of 3 epochs.
 
 [10]: Mingxing Tan and Ruoming Pang and Quoc V. Le 2020. EfficientDet: Scalable and Efficient Object Detection. In 2020 IEEE/CVF Conference on Computer Vision and Pattern Recognition, CVPR 2020, Seattle, WA, USA, June 13-19, 2020 (pp. 10778–10787). Computer Vision Foundation / IEEE.
+
 [11]: Kingma, D., and Ba, J. 2015. Adam: A method for stochastic optimization. In 3rd International Conference on Learning Representations, ICLR 2015 - Conference Track Proceedings.
 
 #### Faster R-CNN
@@ -56,12 +62,15 @@ Faster R-CNN is the most famous two-stage object detector [12]. And many of its 
 For Faster R-CNN, we use the Adam optimizer [11] with a learning rate of 1e-4 and a plateau scheduler.
 
 [12]: Shaoqing Ren and Kaiming He and Ross B. Girshick and Jian Sun 2017. Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks. IEEE Trans. Pattern Anal. Mach. Intell., 39(6), p.1137–1149.
+
 [13]: Pengfei Zhu and Longyin Wen and Dawei Du and Xiao Bian and Qinghua Hu and Haibin Ling 2020. Vision Meets Drones: Past, Present and Future. CoRR, abs/2001.06303.
+
 [14]: He, K., Zhang, X., Ren, S., and Sun, J. 2016. Deep residual learning for image recognition. In Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition (pp. 770–778). IEEE Computer Society.
+
 [15]: Xie, S., Girshick, R., Dollár, P., Tu, Z., and He, K. 2017. Aggregated residual transformations for deep neural networks. In Proceedings of the IEEE conference on computer vision and pattern recognition (pp. 1492–1500).
 
 #### Yolov4
-Bochkovskiy \etal published YoloV4 [16], which is the latest member of the Yolo-family providing a scientific publication. Besides a comprehensive architecture and parameter search, they did an in-depth analysis of augmentation techniques, called 'bag of freebies', and introduced the Mosaic data augmentation technique.
+Bochkovskiy et al. published YoloV4 [16], which is the latest member of the Yolo-family providing a scientific publication. Besides a comprehensive architecture and parameter search, they did an in-depth analysis of augmentation techniques, called 'bag of freebies', and introduced the Mosaic data augmentation technique.
 YoloV4 is a prominent representative of the object detectors because of impressive results on MS COCO. By default, YoloV4 scales all input images down to an image size of 608x608 pixels. For our experiments, we removed this preprocessing to improve the prediction of smaller objects.
 
 [16]: Bochkovskiy, A., Wang, C., and Liao, H.. (2020). YOLOv4: Optimal Speed and Accuracy of Object Detection.
