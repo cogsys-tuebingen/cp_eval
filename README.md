@@ -6,7 +6,14 @@ Besided further details about the experiments and a full list of all runs, you w
 
 ## Cite as
 ```
-TODO
+@misc{varga2022comprehensive,
+      title={Comprehensive Analysis of the Object Detection Pipeline on UAVs}, 
+      author={Leon Amadeus Varga and Sebastian Koch and Andreas Zell},
+      year={2022},
+      eprint={2203.00306},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO}
+}
 ```
 ## Preprocessing pipeline code
 see code/
