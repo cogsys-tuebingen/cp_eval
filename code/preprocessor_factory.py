@@ -1,4 +1,6 @@
 import re
+import numpy as np
+import cv2
 
 from converter import *
 
@@ -49,12 +51,23 @@ def _parse_preprocessing_command(s: str):
 def convert_2_sample(img):
     return {
         'img': img,
-        'annot': []
+        'annot': np.array([])
     }
 
 
 def extract_image(sample):
     return sample['img']
+
+def get_used_jpeg_compression_quality(converter):
+    """
+        checks whether jpeg compression is part of the compression pipeline.
+        if yes the lowest compression quality is return otherwise False
+    """
+    jpeg_converters = [c for c in converter if isinstance(c, CompressionLevelSet) and c.compression_strategy == 'jpeg']
+    if len(jpeg_converters) > 0:
+        return int(min([c.to_compression_level for c in jpeg_converters]))
+    else:
+        return False
 
 
 def generate_preprocessing_pipelines(train_pipeline_str, validation_pipeline_str=None,

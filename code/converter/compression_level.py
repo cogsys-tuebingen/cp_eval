@@ -1,7 +1,6 @@
 import os.path
 
 import cv2
-import numpy as np
 import torch
 
 strategies = {'jpg': cv2.IMWRITE_JPEG_QUALITY, 'jpeg': cv2.IMWRITE_JPEG_QUALITY, 'png': cv2.IMWRITE_PNG_COMPRESSION}
@@ -54,10 +53,7 @@ if __name__ == '__main__':
     os.makedirs(out_folder, exist_ok=True)
 
     for p in tqdm.tqdm(glob.glob(os.path.join(opt.path, '*.jpg'))):
-        #print(f"Load file {p}")
         img = cv2.imread(p, cv2.IMREAD_UNCHANGED)
-        #print(f"\tImage depth: {img.dtype}")
-        #reduced_img = _compress_img(img, 'jpeg', compression)
         cv2.imwrite(os.path.join(out_folder, os.path.basename(p)), img, [int(cv2.IMWRITE_JPEG_QUALITY), compression])
 
 
